@@ -1,0 +1,13 @@
+<div class="card">
+<div *ngIf="randomIndex==1">
+    <img [src]="element.thumbnail" />
+    <p>{{element.description}}</p>
+    <p>{{element.title}}</p>
+</div>
+<div *ngIf="randomIndex==2">
+    <p>{{element.title}}</p>
+</div>
+<div *ngIf="randomIndex==3">
+    <img [src]="element.thumbnail" />
+</div>
+</div>
