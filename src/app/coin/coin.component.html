@@ -1,2 +1,29 @@
 <p>coin works!</p>
-{{id}}
+{{id}} <hr>
+Price: 
+{{alltimehigh_price}}
+<hr>
+Time:
+{{alltimehigh_time}}
+<hr>
+Market Cap:{{marketCap}}
+<hr>
+maxSupply:{{maxSupply}}
+<hr>
+Cir Supply:{{circulatingSupply}}
+<hr>
+supply time:{{supplytime}}
+<hr>
+colour: {{color}}
+<hr>
+{{name}}
+<div *ngIf="isDataLoaded; else loading">
+    
+     <app-chart [colour]="color" ></app-chart>
+   
+    
+</div>
+<ng-template #loading>
+     <p>Loading...</p>
+</ng-template>
+<app-chart2></app-chart2>
