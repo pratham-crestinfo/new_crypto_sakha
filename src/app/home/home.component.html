@@ -1,2 +1,13 @@
 <p>home works!</p>
-<h1>ksjbf</h1>
+<button (click)="goToAuth()">AUTh</button>
+<h1>{{isAuthenticated}}</h1>
+<h1 *ngIf="isAuthenticated"> you are Logged in</h1>
+<h1 *ngIf="!isAuthenticated"> please log in</h1>
+
+
+<form #coinform="ngForm">
+     <label for="coinid">CoinId:</label>
+     <input type="text" name="coinid" ngModel/>
+     <button (click)="addcoinid(coinform)">ADD</button>
+</form>
+{{test_var}}

@@ -1,0 +1,9 @@
+<p>auth works!</p>
+<form #form="ngForm">
+  <label for="email">Email:</label>
+  <input type="email" name="email" ngModel required />
+  <label for="password">Password:</label>
+  <input type="password" name="password" ngModel required />
+  <button (click)="onSignIn(form)" [disabled]="!form.valid">SIGN IN</button>
+  <button (click)="onSignUp(form)" [disabled]="!form.valid">SIGN UP</button>
+</form>
