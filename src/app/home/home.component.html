@@ -8,6 +8,6 @@
 <form #coinform="ngForm">
      <label for="coinid">CoinId:</label>
      <input type="text" name="coinid" ngModel/>
-     <button (click)="addcoinid(coinform)">ADD</button>
+     <button (click)="addcoinid(coinform)" [disabled]="!canAdd">ADD</button>
 </form>
 {{test_var}}
