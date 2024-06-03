@@ -22,6 +22,7 @@ export class AuthComponent {
         const expirationDate = new Date(new Date().getTime() + +res.expiresIn * 1000);
         const user = new User(res.email,res.localId,res.idToken,expirationDate);
         this.authservice.user.next(user);
+       
         this.authservice.isAuthenticated.next(true);
       },
       error:(err:Error)=>
@@ -43,6 +44,7 @@ export class AuthComponent {
         const expirationDate = new Date(new Date().getTime() + +res.expiresIn * 1000);
         const user = new User(res.email,res.localId,res.idToken,expirationDate);
         this.authservice.user.next(user);
+        console.log(this.authservice.user)
         this.authservice.isAuthenticated.next(true);
       },
       error:(err:Error)=>

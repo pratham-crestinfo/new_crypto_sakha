@@ -1,0 +1,16 @@
+<p>watchlist works!</p>
+<table>
+     <tr>
+       <th>name</th>
+       <th>symbol</th>
+       <th>change</th>
+       <th>price</th>
+     </tr>
+     <tr *ngFor="let data of coinData" (click)="getCoinDetails(data.uuid)">
+       <td>{{data.name}}</td>
+       <img src={{data.iconUrl}}/>
+       <td>{{data.symbol}}</td>
+       <td>{{data.change}}</td>
+       <td>{{data.price}}</td>
+     </tr>
+   </table>

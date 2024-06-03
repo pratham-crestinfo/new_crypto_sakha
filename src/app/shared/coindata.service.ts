@@ -43,9 +43,9 @@ export class coinDataService {
   getValues(num:number)
   {
     if (num >= 1e9) {
-      return (num / 1e9).toFixed(2) + 'B'; // Billions
+      return (num / 1e9).toFixed(2) + ' Billion USD'; // Billions
     } else if (num >= 1e6) {
-      return (num / 1e6).toFixed(2) + 'M'; // Millions
+      return (num / 1e6).toFixed(2) + ' Million USD'; // Millions
     } else {
       return num.toString(); // Less than a million
     }
@@ -58,14 +58,12 @@ export class coinDataService {
    })
    historyDataParams =  {
     referenceCurrencyUuid: 'yhjMzLPhuIDl',
-    timePeriod: '3h'
+    timePeriod: '1y'
   }
   getPriceChart(id:string)
   {
     return this.http.get(`https://coinranking1.p.rapidapi.com/coin/${id}/history`,{headers:this.historyDataHeaders,params:this.historyDataParams})
   }
-
-
   // GET OHLC CHART
   ohlcdataParams={
     referenceCurrencyUuid: 'yhjMzLPhuIDl',
@@ -75,5 +73,4 @@ export class coinDataService {
   {
       return this.http.get(`https://coinranking1.p.rapidapi.com/coin/${id}/ohlc`,{headers:this.historyDataHeaders,params:this.ohlcdataParams})
   }
-
 }

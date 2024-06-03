@@ -1,0 +1,32 @@
+img{
+     width:30px;
+     height:30px
+}
+tr:hover{
+     cursor: pointer;
+     text-decoration: underline;
+}
+
+.tab-container{
+     display: grid;
+     grid-template-columns: 1fr 1fr 1fr 1fr 1fr; 
+}
+
+.name{
+     display: flex;
+     justify-content: space-between;
+}
+.data{
+     display: flex;
+     align-items: center;
+}
+.data img{
+     margin-right:10px
+}
+.data p{
+     margin:2px
+}
+.name{
+     font-weight: 200;
+     font-size: 12px;
+}

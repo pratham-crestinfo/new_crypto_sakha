@@ -66,25 +66,55 @@ createOHLCchart()
           label: 'open',
           data: this.OHLCdata.open,
           backgroundColor:"blue",
+          borderColor: "#212529",  // Change line color to white
+          
         },
         {
           label: 'close',
           data: this.OHLCdata.close,
           backgroundColor:"yellow",
+          borderColor:  "#212529",
         },
         {
           label: 'low',
           data: this.OHLCdata.low,
           backgroundColor:"red",
+          borderColor:  "#212529",
         },
         {
           label: 'high',
           data: this.OHLCdata.high,
           backgroundColor:"green",
+          borderColor:  "#212529",
         },
       ],
     },
-    options: {aspectRatio: 2.5 },
+    options: {aspectRatio: 2.5 ,elements: {
+      point: {
+        radius: 3  // Default radius for all points
+      },
+    },
+    scales: {
+      x: {
+          ticks: {
+              maxTicksLimit: 7,
+              color:"#ADB5BD", align: 'start', // Align labels to the start (left)
+              padding: 10, // Adjust padding as needed
+          }, 
+          grid: {
+            color: '#343a40',  // Color of grid lines for x-axis
+          },},
+          y:{
+            ticks:{
+              color:"#ADB5BD"
+            },
+            grid: {
+              color: '#343a40',  // Color of grid lines for x-axis
+            },
+          }
+     
+  }
+  },
   });
 }
 }

@@ -1,0 +1,56 @@
+<div class="tab-container">
+<div class="tab">
+  <div class="data">
+    <img src="https://cdn.coinranking.com/1uJ_RVrmC/dfinity-icp.png" />
+    <div class="info">
+      <div class="name">
+        <p class="full-name">BITCOIN</p>
+        <p class="symbol">BTC</p>
+      </div>
+      <p class="coin-price">USD 86689.889</p>
+    </div>
+  </div>
+</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+<div *ngFor="let stat of stats">
+  <strong>{{ getObjectKey(stat) }}:</strong> {{ getObjectValue(stat) }}
+</div>
+<hr />
+Best Perfoming coins
+<div>
+  <h1 *ngFor="let coin of bestcoins">{{ coin.name }}</h1>
+</div>
+Latest coins
+<div>
+  <h1 *ngFor="let coinn of newestCoins">{{ coinn.name }}</h1>
+</div>
+<button (click)="prev()" [disabled]="!prevpossible"> < </button>
+<button (click)="forward()"> > </button>
+<table>
+  <tr>
+    <th>name</th>
+    <th>icon</th>
+    <th>symbol</th>
+    <th>change</th>
+    <th>price</th>
+  </tr>
+  <tr *ngFor="let data of coinData" (click)="getCoinDetails(data.uuid)">
+    <td>{{data.name}}</td>
+    <img src={{data.iconUrl}}/>
+    <!-- <td>{{data.iconUrl}}</td> -->
+    <td>{{data.symbol}}</td>
+    <td>{{data.change}}</td>
+    <td>{{data.price}}</td>
+  </tr>
+</table>
