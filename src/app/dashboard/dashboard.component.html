@@ -10,6 +10,10 @@
       <p class="coin-price">USD 86689.889</p>
     </div>
   </div>
+  <app-sparkline *ngIf="datafetched else notfetched" [data]="skd"></app-sparkline>
+  <ng-template #notfetched>
+    <p>Loading</p>
+  </ng-template>
 </div>
 </div>
 
@@ -47,7 +51,7 @@ Latest coins
   </tr>
   <tr *ngFor="let data of coinData" (click)="getCoinDetails(data.uuid)">
     <td>{{data.name}}</td>
-    <img src={{data.iconUrl}}/>
+    <!-- <img src={{data.iconUrl}}/> -->
     <!-- <td>{{data.iconUrl}}</td> -->
     <td>{{data.symbol}}</td>
     <td>{{data.change}}</td>

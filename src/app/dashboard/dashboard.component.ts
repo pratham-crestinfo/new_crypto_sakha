@@ -5,7 +5,7 @@ import { coinDataService } from '../shared/coindata.service';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute, Route, Router } from '@angular/router';
 import { of } from 'rxjs';
-
+import { SparklineComponent } from './sparkline/sparkline.component';
 
 interface coinDataType{
   name:string,
@@ -13,14 +13,15 @@ interface coinDataType{
   change:string,
   symbol:string, 
   price:string,
-  uuid:string
+  uuid:string,
+  sparkLineData:number[];
 }
 
 
 @Component({
   selector: 'app-dashboard',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule,SparklineComponent],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.css'
 })
@@ -40,6 +41,8 @@ export class DashboardComponent
   coinData:coinDataType[]=[];
   offset:number=0;
   prevpossible:boolean=false;
+  datafetched:boolean=false;
+  skd:number[]=[];
   ngOnInit()
   {
     this.dashboardservice.getglobalstats().subscribe({
@@ -67,12 +70,22 @@ export class DashboardComponent
                   change:res.data.coins[i].change,
                   symbol:res.data.coins[i].symbol, 
                   price:res.data.coins[i].price,
-                  uuid:res.data.coins[i].uuid
+                  uuid:res.data.coins[i].uuid,
+                  sparkLineData:res.data.coins[i].sparkline
                  })
             }
+            const temp_arr=[];
+            for(let i=0;i<res.data.coins[0].sparkline.length;i++)
+              {
+                temp_arr.push(Number(res.data.coins[0].sparkline[i]))
+              }
+            this.skd=temp_arr;
         },
         error:(err:Error)=>{
           console.log(err);
+        },
+        complete:()=>{
+          this.datafetched=true;
         }
       })
   }
@@ -104,7 +117,8 @@ export class DashboardComponent
                   change:res.data.coins[i].change,
                   symbol:res.data.coins[i].symbol, 
                   price:res.data.coins[i].price,
-                  uuid:res.data.coins[i].uuid
+                  uuid:res.data.coins[i].uuid,
+                  sparkLineData:res.data.coins[i].sparkline
                  })
             }
         } ,
@@ -132,7 +146,8 @@ export class DashboardComponent
                 change:res.data.coins[i].change,
                 symbol:res.data.coins[i].symbol, 
                 price:res.data.coins[i].price,
-                uuid:res.data.coins[i].uuid
+                uuid:res.data.coins[i].uuid,
+                sparkLineData:res.data.coins[i].sparkline
                })
           }
       } ,
