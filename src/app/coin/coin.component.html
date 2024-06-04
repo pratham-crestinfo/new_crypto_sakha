@@ -29,13 +29,13 @@
     <p id="chart_name">OHLC Chart</p>
     <hr />
   </div>
-  <div *ngIf="isDataLoaded; else loading" class="chart-comp">
+  <div *ngIf="isDataLoaded; else loading" class="chart-comp charts">
     <app-chart [colour]="color"></app-chart>
   </div>
   <ng-template #loading>
     <p>Loading...</p>
   </ng-template>
-  <app-chart2 class="chart-comp"></app-chart2>
+  <app-chart2 class="chart-comp charts"></app-chart2>
 </div>
 
 <div class="desc-container">

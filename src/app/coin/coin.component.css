@@ -34,7 +34,7 @@ hr{
      width: 200px;
      height: 200px;
      border-radius: 50%;
-     background: radial-gradient(circle,white 0% ,var(--inner-color) 30%,#212529 70% );
+     background: radial-gradient(circle,white 0% ,var(--inner-color) 30%,black 70% );
      display: flex;
      justify-content: center;
      align-items: center;
@@ -59,6 +59,19 @@ hr{
      overflow-x: auto; /* Enable horizontal scrolling */
      -ms-overflow-style: none; /* Hide scrollbar for Internet Explorer and Edge */
      scrollbar-width: none; /* Hide scrollbar for Firefox */
+
+
+
+
+
+
+
+
+
+
+
+
+
    }
    .card {
      flex: 0 0 calc(20% - 10px);
@@ -98,6 +111,14 @@ hr{
 .chart-comp{
      margin-left: 25px;
 }
+
+
+
+
+
+
+
+
 .desc-container
 {
      margin-left: 25px;

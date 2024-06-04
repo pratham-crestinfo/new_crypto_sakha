@@ -1,4 +1,4 @@
 <div class="chart-container">
-     <canvas  id="sparkline" >{{ chart }}</canvas>
+     <canvas  id={{id}} *ngIf="id && data">{{ chart }}</canvas>
 </div>
 

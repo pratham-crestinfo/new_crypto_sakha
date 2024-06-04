@@ -4,9 +4,10 @@ import { HttpClient } from '@angular/common/http';
 import { coinDataService } from '../shared/coindata.service';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute, Route, Router } from '@angular/router';
-import { of } from 'rxjs';
+import { generate, of } from 'rxjs';
 import { SparklineComponent } from './sparkline/sparkline.component';
-
+import { MatIconModule } from '@angular/material/icon';
+import { RotatingGlobeComponent } from '../rotating-globe/rotating-globe.component';
 interface coinDataType{
   name:string,
   iconUrl:string,
@@ -15,13 +16,14 @@ interface coinDataType{
   price:string,
   uuid:string,
   sparkLineData:number[];
+  color:string;
 }
 
 
 @Component({
   selector: 'app-dashboard',
   standalone: true,
-  imports: [CommonModule,SparklineComponent],
+  imports: [CommonModule,SparklineComponent,MatIconModule,RotatingGlobeComponent],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.css'
 })
@@ -67,19 +69,20 @@ export class DashboardComponent
                  this.coinData.push({
                   name:res.data.coins[i].name,
                   iconUrl:res.data.coins[i].iconUrl,
-                  change:res.data.coins[i].change,
+                  change:this.getchange(res.data.coins[i].change),
                   symbol:res.data.coins[i].symbol, 
                   price:res.data.coins[i].price,
                   uuid:res.data.coins[i].uuid,
-                  sparkLineData:res.data.coins[i].sparkline
+                  sparkLineData:res.data.coins[i].sparkline,
+                  color:res.data.coins[i].color
                  })
             }
-            const temp_arr=[];
-            for(let i=0;i<res.data.coins[0].sparkline.length;i++)
-              {
-                temp_arr.push(Number(res.data.coins[0].sparkline[i]))
-              }
-            this.skd=temp_arr;
+            // const temp_arr=[];
+            // for(let i=0;i<res.data.coins[40].sparkline.length;i++)
+            //   {
+            //     temp_arr.push(Number(res.data.coins[40].sparkline[i]))
+            //   }
+            // this.skd=temp_arr;
         },
         error:(err:Error)=>{
           console.log(err);
@@ -118,7 +121,8 @@ export class DashboardComponent
                   symbol:res.data.coins[i].symbol, 
                   price:res.data.coins[i].price,
                   uuid:res.data.coins[i].uuid,
-                  sparkLineData:res.data.coins[i].sparkline
+                  sparkLineData:res.data.coins[i].sparkline,
+                  color:res.data.coins[i].color
                  })
             }
         } ,
@@ -147,7 +151,8 @@ export class DashboardComponent
                 symbol:res.data.coins[i].symbol, 
                 price:res.data.coins[i].price,
                 uuid:res.data.coins[i].uuid,
-                sparkLineData:res.data.coins[i].sparkline
+                sparkLineData:res.data.coins[i].sparkline,
+                color:res.data.coins[i].color
                })
           }
       } ,
@@ -155,5 +160,22 @@ export class DashboardComponent
         console.log(err);
       }
     })
+  }
+  getchange(change:number)
+  {
+      if(change>0)
+        return "+" + change;
+      else
+        return String(change);
+  }
+  getColor(change:any){
+    // console.log(change);
+    return Number(change)>0 ? "green" : "red";
+  }
+  circleTransform = 'translate3d(-100px, -100px, 0)'; // Initial off-screen position
+  onMouseMove(event: MouseEvent) {
+    const mouseX = event.clientX;
+    const mouseY = event.clientY;
+    this.circleTransform = `translate3d(${mouseX}px, ${mouseY}px, 0)`;
   }
 }
