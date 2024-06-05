@@ -1,4 +1,85 @@
-<p>home works!</p>
+<!-- <p>home works!</p> -->
+<!-- <app-lottery-text></app-lottery-text> -->
+<div class="home-container">
+     <div class="fixed-element">
+          <p id="fixed-text">Fixed Element</p>
+      </div>
+      <div class="fixed-line">
+          <div class="line-round active" [class.active]="currentSection === 1"></div>
+          <div class="line-round" [class.active]="currentSection === 2"></div>
+          <div class="line-round" [class.active]="currentSection === 3"></div>
+          <div class="line-round" [class.active]="currentSection === 4"></div>
+      </div>
+          <div class="parallax" id="first">
+               <div class="left-content">
+                    <p class="upper"> This Is</p>
+                    <div class="lower">
+                         <hr>
+                         <p>Crypto-Mate</p>
+                    </div>
+                   
+                    <p class="lowest">Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto officia ut a laborum neque dignissimos cumque, in facere quibusdam nemo deleniti maxime consequuntur beatae repellendus corrupti atque eum odit ullam sunt animi!
+                    </p>
+                    <app-auth *ngIf="wantToAuth else logbutton" ></app-auth>
+                    <ng-template #logbutton>
+                         <!-- <button  >Signin/SignUp</button> -->
+                         <p id="authbtn" (click)="wantToAuthpressed()"> SignIn/SignUp -> </p>
+                    </ng-template>
+               </div>
+             
+          </div>
+          <div class="parallax" id="second"> <div class="left-content">
+               <p class="upper">1000+ Crypto Coins</p>
+               <div class="lower">
+                    <hr>
+                    <p class="gradient-text">At your Dashboard</p>
+               </div>
+               <p class="lowest">Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto officia ut a laborum neque dignissimos cumque, in facere quibusdam nemo deleniti maxime consequuntur beatae repellendus corrupti atque eum odit ullam sunt animi! Delectus praesentium, non incidunt et, exercitationem atque ullam nesciunt vel quia facere, laborum nulla esse sapiente! Dolor, dolorem.
+               </p>
+          </div>
+     </div>
+          <div class="parallax" id="third"> <div class="left-content">
+               <p class="upper">Create Now </p>
+               <div class="lower">
+                    <hr>
+                    <p>your own Watch-list</p>
+               </div>
+               <p class="lowest">Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto officia ut a laborum neque dignissimos cumque, in facere quibusdam nemo deleniti maxime consequuntur beatae repellendus corrupti atque eum odit ullam sunt animi! Delectus praesentium, non incidunt et, exercitationem atque ullam nesciunt vel quia facere, laborum nulla esse sapiente! Dolor, dolorem.
+               </p>
+          </div>
+     </div>
+          <div class="parallax" id="fourth">
+               <div class="left-content">
+                    <p class="upper">For each Coin</p>
+                    <div class="lower">
+                         <hr>
+                         <p> a Detailed Analysis</p>
+                    </div>
+                    <p class="lowest">Lorem ipsum dolor sit amet consectetur adipisicing elit. Iusto officia ut a laborum neque dignissimos cumque, in facere quibusdam nemo deleniti maxime consequuntur beatae repellendus corrupti atque eum odit ullam sunt animi! Delectus praesentium, non incidunt et, exercitationem atque ullam nesciunt vel quia facere, laborum nulla esse sapiente! Dolor, dolorem.
+                    </p>
+               </div>
+          </div>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <div class="parallax" ></div>
 <button (click)="goToAuth()">AUTh</button>
 <h1>{{isAuthenticated}}</h1>
 <h1 *ngIf="isAuthenticated"> you are Logged in</h1>
@@ -12,4 +93,4 @@
 </form>
 <button (click)="getid()" [disabled]="!canAdd">GET ID</button>
 <button (click)="goWatchList()">GO TO WATCH LIST</button>
-{{test_var}}
+{{test_var}} -->

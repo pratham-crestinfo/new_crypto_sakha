@@ -7,10 +7,12 @@ import { FormsModule } from '@angular/forms';
 import { NgForm } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { DataBaseServie } from '../shared/database.service';
+import { LotteryTextComponent } from './lottery-text/lottery-text.component';
+import { AuthComponent } from '../auth/auth.component';
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule,LotteryTextComponent,AuthComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css',
 })
@@ -30,7 +32,8 @@ export class HomeComponent {
   coinid_array: string[]=[];
   usercoinpromise:any;
   usercoinid:string[]=[]
-
+  currentSection:number=1;
+  wantToAuth:boolean=false;
 
   goToAuth() {
     this.router.navigate(['/auth'], { relativeTo: this.activeRoute });
@@ -73,6 +76,36 @@ export class HomeComponent {
   goWatchList()
   {
     this.router.navigate(['/watchlist'],{relativeTo:this.activeRoute})
+  }
+
+
+  ngAfterViewInit() {
+    const fixedText = document.getElementById('fixed-text');
+    const sections = document.querySelectorAll('.parallax');
+    const fixEle=document.getElementsByClassName("fixed-element");
+    const options = {
+      threshold: 0.5 // Adjust this value as needed
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const sectionNumber = Array.from(sections).indexOf(entry.target) + 1;
+          if (fixedText) {
+            fixedText.textContent = `0${sectionNumber}`;
+            fixedText.style.marginTop = `${(sectionNumber+1) * 25}%`;
+            this.currentSection=sectionNumber;
+          }
+        }
+      });
+    }, options);
+
+    sections.forEach(section => {
+      observer.observe(section);
+    });
+  }
+  wantToAuthpressed(){
+    this.wantToAuth=true;
   }
 }
       // console.log(this.user);
